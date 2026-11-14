@@ -1,12 +1,22 @@
-# NovaPulse
-NASA Space Apps 2026 - NovaPulse
 # NovaPulse AI Engine
 
-## Overview
+NASA Space Apps Challenge 2026 – NovaPulse
 
-The NovaPulse AI Engine is responsible for predicting an astronaut's health condition based on physiological, environmental, and mission-related data.
+---
 
-The module loads pre-trained machine learning models and exposes a single prediction function that can be integrated into the backend API.
+# Overview
+
+The NovaPulse AI Engine predicts an astronaut's health condition using physiological, environmental, and mission-related data.
+
+The AI engine consists of six pre-trained machine learning models that are automatically loaded when the module is imported.
+
+The backend only needs to call a single function:
+
+```python
+from ai_engine.models.predict import predict
+```
+
+No model training is required during inference.
 
 ---
 
@@ -33,13 +43,13 @@ ai_engine/
 
 Python 3.11+
 
-Install dependencies:
+Install all dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Main dependencies:
+Main libraries:
 
 - pandas
 - numpy
@@ -49,7 +59,7 @@ Main dependencies:
 
 ---
 
-# Training Models
+# Training
 
 To retrain all models:
 
@@ -57,89 +67,127 @@ To retrain all models:
 python ai_engine/models/train.py
 ```
 
-This script:
+The training pipeline:
 
 - Loads the processed dataset
 - Trains all machine learning models
-- Saves the trained models into `saved_models/`
-- Saves `feature_columns.pkl`
+- Saves trained models into `saved_models/`
+- Generates `feature_columns.pkl`
+
+Training is only required when new models need to be created.
 
 ---
 
 # Prediction
 
-Import the prediction function:
+Import:
 
 ```python
 from ai_engine.models.predict import predict
 ```
 
-Call:
+Usage:
 
 ```python
 result = predict(features)
 ```
 
-where `features` is a Python dictionary containing the required input variables.
+where `features` is a Python dictionary.
 
 ---
 
 # Required Input Features
 
-The prediction function expects the following features:
+The prediction function expects the following fields.
 
-- recovery_score
-- recovery_trend
-- cardiac_state
-- hr_variability
-- activity_score
-- activity_change
-- stress_index
-- stress_variability
-- cognitive_load
-- alpha_beta_ratio
-- theta_alpha_ratio
-- gsr_variability
-- resp_variability
-- has_recovery_data
-- has_activity_data
-- has_eeg_data
-- has_gsr_data
-- has_resp_data
-- source_encoded
-- mission_day
-- heart_rate
-- spo2
-- body_temperature
-- systolic_bp
-- diastolic_bp
-- sleep_hours
-- sleep_quality
-- sleep_efficiency
-- sleep_debt
-- cabin_co2
-- microgravity_days
-- muscle_loss_index
-- bone_density_risk
-- radiation_dose
-- radiation_risk
+| Feature | Type | Unit | Example |
+|----------|------|------|---------|
+| recovery_score | float | score | 82.4 |
+| recovery_trend | float | score | 0.15 |
+| cardiac_state | float | encoded | 1 |
+| hr_variability | float | ms | 54.2 |
+| activity_score | float | score | 81 |
+| activity_change | float | score | -3.1 |
+| stress_index | float | score | 0.32 |
+| stress_variability | float | score | 0.08 |
+| cognitive_load | float | score | 0.45 |
+| alpha_beta_ratio | float | ratio | 1.21 |
+| theta_alpha_ratio | float | ratio | 0.81 |
+| gsr_variability | float | score | 0.28 |
+| resp_variability | float | score | 0.12 |
+| has_recovery_data | bool | boolean | true |
+| has_activity_data | bool | boolean | true |
+| has_eeg_data | bool | boolean | false |
+| has_gsr_data | bool | boolean | true |
+| has_resp_data | bool | boolean | true |
+| source_encoded | integer | encoded | 0 |
+| mission_day | integer | day | 54 |
+| heart_rate | float | bpm | 72 |
+| spo2 | float | % | 98 |
+| body_temperature | float | °C | 36.8 |
+| systolic_bp | float | mmHg | 118 |
+| diastolic_bp | float | mmHg | 76 |
+| sleep_hours | float | hours | 7.4 |
+| sleep_quality | float | score | 87 |
+| sleep_efficiency | float | % | 92 |
+| sleep_debt | float | hours | 0.5 |
+| cabin_co2 | float | ppm | 820 |
+| microgravity_days | integer | days | 34 |
+| muscle_loss_index | float | score | 0.18 |
+| bone_density_risk | float | score | 0.14 |
+| radiation_dose | float | mSv | 5.8 |
+| radiation_risk | float | score | 0.09 |
 
 ---
 
-# Example
+# Input Example
+
+```python
+features = {
+    "recovery_score": 82.4,
+    "recovery_trend": 0.15,
+    "cardiac_state": 1,
+    "hr_variability": 54.2,
+    "activity_score": 81,
+    "activity_change": -3.1,
+    "stress_index": 0.32,
+    "stress_variability": 0.08,
+    "cognitive_load": 0.45,
+    "alpha_beta_ratio": 1.21,
+    "theta_alpha_ratio": 0.81,
+    "gsr_variability": 0.28,
+    "resp_variability": 0.12,
+    "has_recovery_data": True,
+    "has_activity_data": True,
+    "has_eeg_data": False,
+    "has_gsr_data": True,
+    "has_resp_data": True,
+    "source_encoded": 0,
+    "mission_day": 54,
+    "heart_rate": 72,
+    "spo2": 98,
+    "body_temperature": 36.8,
+    "systolic_bp": 118,
+    "diastolic_bp": 76,
+    "sleep_hours": 7.4,
+    "sleep_quality": 87,
+    "sleep_efficiency": 92,
+    "sleep_debt": 0.5,
+    "cabin_co2": 820,
+    "microgravity_days": 34,
+    "muscle_loss_index": 0.18,
+    "bone_density_risk": 0.14,
+    "radiation_dose": 5.8,
+    "radiation_risk": 0.09
+}
+```
+
+Prediction:
 
 ```python
 from ai_engine.models.predict import predict
 
-features = {
-    "heart_rate": 72,
-    "spo2": 98,
-    ...
-}
-
 result = predict(features)
-
-print(result)
 ```
 
 ---
@@ -152,44 +200,96 @@ Example:
 
 ```json
 {
-    "health_score": 74.41,
-    "fatigue_risk": 0.174,
-    "cardio_risk": 0.238,
-    "sleep_risk": 0.119,
-    "mission_status": "NORMAL",
-    "anomaly": "Normal"
+  "health_score": 74.41,
+  "fatigue_risk": 0.174,
+  "cardio_risk": 0.238,
+  "sleep_risk": 0.119,
+  "mission_status": "NORMAL",
+  "anomaly": "Normal"
 }
 ```
 
-Depending on the version of `predict.py`, additional fields such as overall risk, confidence scores, timestamps, model version, or inference time may also be included.
+Output fields:
+
+| Field | Type | Description |
+|--------|------|-------------|
+| health_score | float | Overall health score |
+| fatigue_risk | float | Fatigue prediction |
+| cardio_risk | float | Cardiovascular risk |
+| sleep_risk | float | Sleep-related risk |
+| mission_status | string | Mission status classification |
+| anomaly | string | Anomaly detection result |
+
+Depending on future versions of the AI engine, additional metadata may be returned (confidence score, inference time, model version, etc.).
+
+---
+
+# Backend Integration
+
+Example using FastAPI:
+
+```python
+from fastapi import APIRouter
+from ai_engine.models.predict import predict
+
+router = APIRouter()
+
+@router.post("/predict")
+def predict_health(payload: dict):
+    return predict(payload)
+```
+
+The backend should:
+
+1. Receive data from the frontend.
+2. Validate the request.
+3. Build the feature dictionary.
+4. Call `predict(features)`.
+5. Return the prediction as JSON.
+
+No preprocessing or model loading is required inside the backend.
+
+---
+
+# Error Handling
+
+The prediction function may raise exceptions if:
+
+- A required feature is missing.
+- A feature has an invalid type.
+- A trained model cannot be loaded.
+- `feature_columns.pkl` is missing.
+
+The backend should return appropriate HTTP error codes (400 or 500) depending on the error.
 
 ---
 
 # Models
 
-The AI engine uses six trained models:
-
 | Model | Purpose |
-|-------|---------|
-| health_model.pkl | Predict overall health score |
-| fatigue_model.pkl | Predict fatigue risk |
-| cardio_model.pkl | Predict cardiovascular risk |
-| sleep_model.pkl | Predict sleep risk |
-| mission_status_model.pkl | Predict mission status |
-| anomaly_model.pkl | Detect abnormal physiological patterns |
+|--------|---------|
+| health_model.pkl | Overall health prediction |
+| fatigue_model.pkl | Fatigue risk prediction |
+| cardio_model.pkl | Cardiovascular risk prediction |
+| sleep_model.pkl | Sleep risk prediction |
+| mission_status_model.pkl | Mission status classification |
+| anomaly_model.pkl | Physiological anomaly detection |
+
+All models are stored using Git LFS because of their size.
 
 ---
 
 # Notes
 
-- All models are loaded only once when the module is imported.
+- Models are loaded only once during module import.
 - Input features are automatically ordered before inference.
-- Missing required features raise an exception.
-- The backend only needs to call the `predict()` function.
-- The frontend consumes the JSON returned by the backend.
+- Feature ordering is handled internally.
+- Backend developers should not modify the prediction pipeline.
+- The frontend only communicates with the backend API.
+- The backend is the only component that directly interacts with the AI engine.
 
 ---
 
 # Authors
 
-NovaPulse AI Teamcccc
+NovaPulse AI Team

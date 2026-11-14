@@ -1,22 +1,78 @@
-# Virtual environment
+# =========================
+# Virtual Environment
+# =========================
 .venv/
 
-# Python cache
+# =========================
+# Python
+# =========================
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
 
+# =========================
 # VS Code
+# =========================
 .vscode/
 
+# =========================
 # Jupyter
+# =========================
 .ipynb_checkpoints/
 
+# =========================
 # Environment variables
+# =========================
 .env
 
-# Data generated during execution
-data/simulated/
+# =========================
+# Dataset folders
+# =========================
+data/raw/
+data/intermediate/
 data/processed/
+data/simulated/
 
-# Test cache
+# Keep folder structure
+!data/raw/.gitkeep
+!data/intermediate/.gitkeep
+!data/processed/.gitkeep
+!data/simulated/.gitkeep
+
+# =========================
+# Generated files
+# =========================
+*.parquet
+*.feather
+*.joblib
+*.pickle
+*.h5
+*.onnx
+
+# =========================
+# Logs
+# =========================
+*.log
+outputs/logs/
+
+# =========================
+# Pytest
+# =========================
 .pytest_cache/
+
+# =========================
+# Coverage
+# =========================
+.coverage
+htmlcov/
+
+# =========================
+# macOS
+# =========================
+.DS_Store
+
+# =========================
+# Windows
+# =========================
+Thumbs.db
+desktop.ini

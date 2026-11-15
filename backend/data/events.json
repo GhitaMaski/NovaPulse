@@ -1,0 +1,86 @@
+[
+  {
+    "id": "EVT-DEFAULT-01",
+    "type": "infection",
+    "crewIds": [
+      "CREW-02"
+    ],
+    "startDay": 47,
+    "endDay": 57,
+    "durationDays": 11,
+    "intensity": 0.85,
+    "source": "scenario",
+    "magnitude": "Moderate"
+  },
+  {
+    "id": "EVT-DEFAULT-02",
+    "type": "solar_particle_event",
+    "crewIds": [
+      "CREW-01",
+      "CREW-02",
+      "CREW-03"
+    ],
+    "startDay": 100,
+    "endDay": 102,
+    "durationDays": 3,
+    "intensity": 1.0,
+    "source": "donki",
+    "magnitude": "S3-Strong"
+  },
+  {
+    "id": "EVT-DEFAULT-03",
+    "type": "sleep_disruption",
+    "crewIds": [
+      "CREW-01"
+    ],
+    "startDay": 112,
+    "endDay": 124,
+    "durationDays": 13,
+    "intensity": 0.8,
+    "source": "scenario",
+    "magnitude": "Moderate"
+  },
+  {
+    "id": "EVT-DEFAULT-04",
+    "type": "exercise_decline",
+    "crewIds": [
+      "CREW-03"
+    ],
+    "startDay": 125,
+    "endDay": 200,
+    "durationDays": 76,
+    "intensity": 0.75,
+    "source": "scenario",
+    "magnitude": "Progressive"
+  },
+  {
+    "id": "EVT-DEFAULT-05",
+    "type": "isolation_mood_downturn",
+    "crewIds": [
+      "CREW-01",
+      "CREW-02",
+      "CREW-03"
+    ],
+    "startDay": 160,
+    "endDay": 200,
+    "durationDays": 41,
+    "intensity": 0.7,
+    "source": "scenario",
+    "magnitude": "Cumulative"
+  },
+  {
+    "id": "EVT-DEFAULT-06",
+    "type": "cabin_co2_rise",
+    "crewIds": [
+      "CREW-01",
+      "CREW-02",
+      "CREW-03"
+    ],
+    "startDay": 175,
+    "endDay": 180,
+    "durationDays": 6,
+    "intensity": 0.8,
+    "source": "scenario",
+    "magnitude": "LifeSupportECLSS"
+  }
+]

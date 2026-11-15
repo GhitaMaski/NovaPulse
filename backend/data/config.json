@@ -1,0 +1,9 @@
+{
+  "seed": 42,
+  "totalDays": 200,
+  "startDate": "2024-02-01",
+  "defaultOneWayDelaySec": 720,
+  "timeCompression": 60,
+  "careerLimitMsv": 600.0,
+  "generatedAt": "2024-02-01T00:00:00Z"
+}

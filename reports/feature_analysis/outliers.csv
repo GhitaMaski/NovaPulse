@@ -1,0 +1,14 @@
+feature,outliers
+recovery_score,3582
+recovery_trend,534
+cardiac_state,1726
+hr_variability,2563
+activity_score,455
+activity_change,342
+stress_index,1869
+stress_variability,1241
+cognitive_load,7
+alpha_beta_ratio,0
+theta_alpha_ratio,6
+gsr_variability,8
+resp_variability,4

@@ -1,0 +1,83 @@
+[
+  {
+    "id": "DONKI-FLR-2024-03-23",
+    "type": "FLR",
+    "startDay": 52,
+    "endDay": 52,
+    "source": "donki",
+    "magnitude": "X1.1",
+    "details": "Major flare from active region 3614"
+  },
+  {
+    "id": "DONKI-CME-2024-03-24",
+    "type": "CME",
+    "startDay": 53,
+    "endDay": 54,
+    "source": "donki",
+    "magnitude": "950 km/s",
+    "details": "Earth/spacecraft directed coronal mass ejection"
+  },
+  {
+    "id": "DONKI-FLR-2024-05-10",
+    "type": "FLR",
+    "startDay": 100,
+    "endDay": 101,
+    "source": "donki",
+    "magnitude": "X5.8",
+    "details": "Extreme solar flare from active region AR3664"
+  },
+  {
+    "id": "DONKI-SEP-2024-05-10",
+    "type": "SEP",
+    "startDay": 100,
+    "endDay": 103,
+    "source": "donki",
+    "magnitude": "S3-Strong",
+    "details": "High energy proton flux exceeding 100 MeV threshold"
+  },
+  {
+    "id": "DONKI-CME-2024-05-10",
+    "type": "CME",
+    "startDay": 100,
+    "endDay": 102,
+    "source": "donki",
+    "magnitude": "1400 km/s",
+    "details": "Multiple fast halo CMEs in transit"
+  },
+  {
+    "id": "DONKI-GST-2024-05-11",
+    "type": "GST",
+    "startDay": 101,
+    "endDay": 103,
+    "source": "donki",
+    "magnitude": "G5 Extreme (Kp 9.0)",
+    "details": "Extreme geomagnetic disturbance"
+  },
+  {
+    "id": "DONKI-FLR-2024-05-14",
+    "type": "FLR",
+    "startDay": 104,
+    "endDay": 104,
+    "source": "donki",
+    "magnitude": "X8.7",
+    "details": "Strongest solar flare of Solar Cycle 25"
+  },
+  {
+    "id": "DONKI-IPS-2024-05-11",
+    "type": "IPS",
+    "startDay": 101,
+    "endDay": 101,
+    "source": "donki",
+    "magnitude": "Shock Mach 3.2",
+    "details": "Interplanetary shock arrival recorded"
+  },
+  {
+    "id": "DONKI-CME-2024-07-16",
+    "type": "CME",
+    "startDay": 167,
+    "endDay": 168,
+    "source": "donki",
+    "magnitude": "750 km/s",
+    "details": "Moderate CME from farside boundary"
+  }
+]

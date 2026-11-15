@@ -1,0 +1,81 @@
+# NovaPulse Scenarios Configuration (NASA Space Apps 2026)
+# Plausible illustrative direction parameters for simulated spaceflight events.
+
+scenarios:
+  solar_particle_event:
+    name: "Solar Particle Event (SEP)"
+    default_duration_days: 2
+    domains: ["radiation", "behavioral"]
+    effects:
+      doseMsv: 5.5
+      sleepEff: -12.0
+      stress: 1.5
+    escalation_rule: "Daily dose rate at 3x expected or DONKI SEP active with 2x dose rate."
+
+  infection:
+    name: "Acute Upper Respiratory Infection"
+    default_duration_days: 9
+    domains: ["immune", "cardiovascular"]
+    effects:
+      coreTemp: 1.0
+      restingHr: 14.0
+      hrv: -20.0
+      respRate: 4.0
+      fatigue: 1.5
+      symptoms: ["cough", "headache", "fatigue"]
+    escalation_rule: "Core temp >= 38.0 C, SpO2 < 94%, or symptoms worsen."
+
+  sleep_disruption:
+    name: "Circadian Rhythm / Sleep Disruption"
+    default_duration_days: 10
+    domains: ["behavioral", "immune"]
+    effects:
+      sleepHours: -2.2
+      sleepEff: -18.0
+      reactionMs: 55.0
+      mood: -1.2
+      fatigue: 1.2
+    escalation_rule: "Reaction time remains slow for 5 or more days."
+
+  exercise_decline:
+    name: "Mechanical Unloading / Exercise Compliance Drop"
+    default_duration_days: 35
+    domains: ["bone_muscle"]
+    effects:
+      resistanceLoad: -35.0
+      exerciseMin: -25.0
+      gripKg: -5.0
+      boneMarker: 10.0
+    escalation_rule: "Decline in mechanical loading continues for 3 or more weeks."
+
+  isolation_mood_downturn:
+    name: "Long-Duration Confinement & Isolation Strain"
+    default_duration_days: 40
+    domains: ["behavioral"]
+    effects:
+      mood: -1.4
+      stress: 1.3
+      hrv: -12.0
+      reactionMs: 30.0
+    escalation_rule: "Depressed mood or high stress persists for 14 or more consecutive days."
+
+  cabin_co2_rise:
+    name: "Life Support Scrubber Degradation / Elevated Cabin CO2"
+    default_duration_days: 5
+    domains: ["context", "behavioral"]
+    effects:
+      cabinCo2: 2400.0
+      reactionMs: 40.0
+      symptoms: ["headache", "lethargy"]
+    escalation_rule: "Cabin CO2 exceeds configured threshold for 24 hours."
+
+  cardiovascular_deconditioning:
+    name: "Cardiovascular Microgravity Deconditioning"
+    default_duration_days: 28
+    domains: ["cardiovascular"]
+    effects:
+      restingHr: 10.0
+      sbp: 12.0
+      dbp: 8.0
+      hrv: -14.0
+    escalation_rule: "Resting HR > 100 bpm or SBP >= 180 mmHg."
